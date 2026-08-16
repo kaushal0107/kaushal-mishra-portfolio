@@ -81,7 +81,7 @@ export const site = {
   resumePath: "/Kaushal-Mishra-Senior-Frontend-Engineer.pdf",
   availability: "Open to Senior Frontend Engineer roles",
   // Update this once the site has a real domain — every SEO tag reads from it.
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://kaushalmishra.dev").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://kaushalmishra.com").replace(/\/$/, ""),
 };
 
 export const seo = {
