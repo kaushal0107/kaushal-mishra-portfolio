@@ -12,8 +12,10 @@ const ArrowIcon = () => (
 export default function Hero() {
   return (
     <section id="top" className="pt-28 sm:pt-36" aria-labelledby="hero-heading">
+      {/* min-w-0 on both columns: without it the grid tracks inherit `min-width: auto`
+          and the terminal's pre-formatted lines widen the whole page on small screens. */}
       <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-        <div>
+        <div className="min-w-0">
           <Rise>
             <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1.5 font-mono text-2xs text-fg-muted backdrop-blur">
               <span className="relative flex h-1.5 w-1.5">
@@ -82,7 +84,7 @@ export default function Hero() {
           </Rise>
         </div>
 
-        <Rise delay={200}>
+        <Rise delay={200} className="min-w-0">
           <TerminalStream yoe={YOE} />
         </Rise>
       </div>
