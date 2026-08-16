@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Backdrop from "@/components/Backdrop";
 import StructuredData from "@/components/StructuredData";
 import { seo, site } from "@/lib/data";
+import { Analytics } from "@vercel/analytics/next";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -91,7 +92,11 @@ export const viewport: Viewport = {
  */
 const themeScript = `(function(){try{var s=localStorage.getItem('theme');var m=window.matchMedia('(prefers-color-scheme: light)').matches;if(s==='light'||(!s&&m)){document.documentElement.classList.add('light')}}catch(e){}})();`;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -120,6 +125,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <Nav />
         {children}
+        <Analytics />
       </body>
     </html>
   );
