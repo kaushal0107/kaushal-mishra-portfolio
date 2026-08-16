@@ -31,6 +31,7 @@ export default function Experience() {
               <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-2xs">
                 <span className="text-accent">{exp.id}</span>
                 <span className="text-fg-muted">{exp.range}</span>
+                <span className="text-fg-dim">· {exp.duration}</span>
                 {exp.current && (
                   <span className="rounded-full border border-[color:rgb(var(--accent)/0.4)] bg-[color:rgb(var(--accent)/0.1)] px-2 py-0.5 text-accent">
                     current

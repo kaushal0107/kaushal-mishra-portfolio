@@ -67,7 +67,7 @@ export default function ResumePage() {
           <span className="text-fg-muted">Résumé</span>
         </nav>
 
-        <header className="mt-8">
+        <header className="mt-8 pb-8">
           <h1 className="font-display text-[clamp(2.25rem,6vw,3.25rem)] font-bold leading-none tracking-[-0.03em]">
             {site.name}
           </h1>
@@ -139,7 +139,9 @@ export default function ResumePage() {
                   <h3 className="font-display text-lg font-semibold tracking-tight">
                     {exp.title}
                   </h3>
-                  <span className="font-mono text-2xs text-fg-dim">{exp.range}</span>
+                  <span className="font-mono text-2xs text-fg-dim">
+                    {exp.range} · {exp.duration}
+                  </span>
                 </div>
                 <p className="mt-1 text-[14px] text-fg-muted">
                   <span className="font-medium text-fg">{exp.company}</span> · {exp.product} ·{" "}

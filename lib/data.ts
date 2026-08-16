@@ -13,6 +13,52 @@ export function yearsOfExperience(from: string = CAREER_START): string {
 
 export const YOE = yearsOfExperience();
 
+/* ------------------------------------------------------------------
+   Date helpers. Every range and duration below is derived from ISO
+   dates rather than typed by hand, so nothing needs editing over time.
+   Parsed as plain Y/M/D — never through the local timezone, which would
+   shift a first-of-the-month start into the previous month.
+-------------------------------------------------------------------*/
+
+const MONTHS = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
+];
+
+function parts(iso: string) {
+  const [y, m] = iso.split("-").map(Number);
+  return { y, m: m - 1 };
+}
+
+export function formatMonthYear(iso: string): string {
+  const { y, m } = parts(iso);
+  return `${MONTHS[m]} ${y}`;
+}
+
+export function formatRange(start: string, end?: string): string {
+  return `${formatMonthYear(start)} — ${end ? formatMonthYear(end) : "Present"}`;
+}
+
+/**
+ * Length of a role in whole months, counting both the first and last month —
+ * the same convention LinkedIn uses, so the numbers match a recruiter's mental model.
+ * An open-ended role is measured to today, and re-measures on every build.
+ */
+export function formatDuration(start: string, end?: string): string {
+  const s = parts(start);
+  const now = new Date();
+  const e = end ? parts(end) : { y: now.getUTCFullYear(), m: now.getUTCMonth() };
+
+  const months = Math.max((e.y - s.y) * 12 + (e.m - s.m) + 1, 1);
+  const yrs = Math.floor(months / 12);
+  const mos = months % 12;
+
+  const chunks: string[] = [];
+  if (yrs) chunks.push(`${yrs} yr${yrs > 1 ? "s" : ""}`);
+  if (mos) chunks.push(`${mos} mo${mos > 1 ? "s" : ""}`);
+  return chunks.join(" ");
+}
+
 export const site = {
   name: "Kaushal Mishra",
   firstName: "Kaushal",
@@ -130,31 +176,31 @@ export const marquee = [
 
 export type Experience = {
   id: string;
-  range: string;
   start: string;
   end?: string;
   title: string;
   company: string;
   product: string;
   location: string;
-  current?: boolean;
   demoUrl?: string;
   demoLabel?: string;
   summary: string;
   bullets: string[];
   tech: string[];
+  /** Derived below — never authored by hand. */
+  range: string;
+  duration: string;
+  current: boolean;
 };
 
-export const experience: Experience[] = [
+const roles: Omit<Experience, "range" | "duration" | "current">[] = [
   {
     id: "01",
-    range: "Aug 2025 — Present",
     start: "2025-08-01",
     title: "Senior Frontend Engineer & Product Lead",
     company: "Enso Web Works",
     product: "InfoQueries — AI Search & Knowledge Platform",
     location: "Mumbai, India",
-    current: true,
     demoUrl: "https://infoqueries.com/searchai",
     demoLabel: "infoqueries.com/searchai",
     summary:
@@ -170,7 +216,6 @@ export const experience: Experience[] = [
   },
   {
     id: "02",
-    range: "Jan 2025 — Jul 2025",
     start: "2025-01-01",
     end: "2025-07-31",
     title: "Frontend Engineer → Lead Frontend Engineer",
@@ -191,7 +236,6 @@ export const experience: Experience[] = [
   },
   {
     id: "03",
-    range: "Nov 2020 — Jan 2025",
     start: "2020-11-24",
     end: "2025-01-31",
     title: "Frontend Developer",
@@ -210,6 +254,14 @@ export const experience: Experience[] = [
     tech: ["React.js", "Tailwind CSS", "GraphQL", "Postgraphile", "WordPress", "WooCommerce"],
   },
 ];
+
+/** Dates in, display strings out — the only place role timing is computed. */
+export const experience: Experience[] = roles.map((role) => ({
+  ...role,
+  range: formatRange(role.start, role.end),
+  duration: formatDuration(role.start, role.end),
+  current: !role.end,
+}));
 
 export const stack = [
   {

@@ -34,7 +34,15 @@ All copy is in one file: **`lib/data.ts`**. Nothing else needs editing to update
 | `about` | About prose and the "How I work" principles |
 | `faqs` | FAQ accordion — also emitted as FAQPage structured data |
 
-Years of experience are calculated from `CAREER_START`, so the number never goes stale.
+### Dates are calculated, not typed
+
+Nothing about timing is hardcoded. Each role carries only ISO `start` and (if it ended) `end`
+dates; the displayed range (`Aug 2025 — Present`), the duration (`1 yr 1 mo`) and the "current"
+badge are all derived. Total years of experience come from `CAREER_START`.
+
+Durations count both the first and last month, matching LinkedIn's convention. Open-ended roles
+measure to today and re-measure on every build — so redeploying is all it takes to stay current.
+The start date is used only for these calculations; it is never shown on the site.
 
 ## Deploying
 
