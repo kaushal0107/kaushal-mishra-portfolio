@@ -1,6 +1,6 @@
 import { site, stats, YOE } from "@/lib/data";
 import TerminalStream from "./TerminalStream";
-import Reveal from "./Reveal";
+import Rise from "./Rise";
 import Marquee from "./Marquee";
 
 const ArrowIcon = () => (
@@ -14,7 +14,7 @@ export default function Hero() {
     <section id="top" className="pt-28 sm:pt-36" aria-labelledby="hero-heading">
       <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         <div>
-          <Reveal>
+          <Rise>
             <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1.5 font-mono text-2xs text-fg-muted backdrop-blur">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent" />
@@ -22,18 +22,18 @@ export default function Hero() {
               </span>
               {site.availability}
             </p>
-          </Reveal>
+          </Rise>
 
-          <Reveal delay={70}>
+          <Rise delay={70}>
             <h1
               id="hero-heading"
               className="mt-6 font-display text-[clamp(2.75rem,8vw,4.75rem)] font-bold leading-[0.95] tracking-[-0.035em]"
             >
               <span className="text-gradient">Kaushal Mishra</span>
             </h1>
-          </Reveal>
+          </Rise>
 
-          <Reveal delay={130}>
+          <Rise delay={130}>
             <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-sm text-fg-muted">
               <span className="text-fg">{site.role}</span>
               <span className="text-line" aria-hidden="true">
@@ -45,9 +45,9 @@ export default function Hero() {
               </span>
               <span>{YOE} years experience</span>
             </p>
-          </Reveal>
+          </Rise>
 
-          <Reveal delay={190}>
+          <Rise delay={190}>
             <p className="mt-6 max-w-xl text-[16.5px] leading-relaxed text-fg-muted sm:text-[17.5px]">
               I take products from an empty repository to production —{" "}
               <strong className="font-semibold text-fg">real-time streaming interfaces</strong>,{" "}
@@ -55,9 +55,9 @@ export default function Hero() {
               rank, and <strong className="font-semibold text-fg">frontend architecture</strong> a
               team can keep building on. Six products shipped across two companies.
             </p>
-          </Reveal>
+          </Rise>
 
-          <Reveal delay={250}>
+          <Rise delay={250}>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href={`mailto:${site.email}`}
@@ -82,15 +82,15 @@ export default function Hero() {
                 GitHub <ArrowIcon />
               </a>
             </div>
-          </Reveal>
+          </Rise>
         </div>
 
-        <Reveal delay={200}>
+        <Rise delay={200}>
           <TerminalStream yoe={YOE} />
-        </Reveal>
+        </Rise>
       </div>
 
-      <Reveal delay={120}>
+      <Rise delay={120}>
         <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line lg:grid-cols-4">
           {stats.map((s) => (
             // reversed so the number reads first visually while dt still precedes dd in markup
@@ -105,7 +105,7 @@ export default function Hero() {
             </div>
           ))}
         </dl>
-      </Reveal>
+      </Rise>
 
       <Marquee />
     </section>
