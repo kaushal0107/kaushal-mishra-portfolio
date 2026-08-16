@@ -13,11 +13,19 @@ import {
 import Footer from "@/components/Footer";
 
 const title = `${site.name} — Résumé | Senior Frontend Engineer`;
-const description = `Full résumé of ${site.name}, Senior Frontend Engineer in ${site.locality}: ${YOE}+ years of experience, roles at Enso Web Works and StoreApps, technical stack, projects and education.`;
+const description = `Full résumé of ${site.name}, Senior Frontend Engineer in ${site.locality}: ${YOE}+ years of experience, roles at Enso Web Works and StoreApps, technical stack, projects and education. Download as PDF.`;
 
 export const metadata: Metadata = {
-  title: "Résumé",
+  // Absolute so the layout's "— Kaushal Mishra" template doesn't repeat the name.
+  title: { absolute: title },
   description,
+  keywords: [
+    `${site.name} resume`,
+    `${site.name} CV`,
+    `${site.name} curriculum vitae`,
+    `${site.name} Senior Frontend Engineer resume`,
+    "frontend engineer resume React Next.js",
+  ],
   alternates: { canonical: "/resume" },
   openGraph: {
     type: "profile",

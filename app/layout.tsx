@@ -104,6 +104,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
+        {/* rel="me" ties this domain to the same identity as the linked profiles. */}
+        <link rel="me" href={site.github} />
+        <link rel="me" href={site.linkedin} />
+        <link rel="me" href={`mailto:${site.email}`} />
       </head>
       <body className="font-sans text-fg antialiased">
         <StructuredData />

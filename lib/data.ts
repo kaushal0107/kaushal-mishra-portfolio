@@ -85,23 +85,40 @@ export const site = {
 };
 
 export const seo = {
-  title: `${site.name} — Senior Frontend Engineer (React, Next.js, AI)`,
+  // Kept under ~60 characters so Google shows it whole rather than truncating.
+  title: `${site.name} — Senior Frontend Engineer | React & Next.js`,
   shortTitle: `${site.name} — Senior Frontend Engineer`,
   description: `${site.name} is a Senior Frontend Engineer in ${site.locality} with ${YOE}+ years building production SaaS and AI-powered platforms in React, Next.js and TypeScript. Six products shipped across StoreApps and Enso Web Works, reaching 10,000+ users — real-time streaming UI, SSR and technical SEO, LLM integration, and frontend architecture.`,
   keywords: [
     "Kaushal Mishra",
     "Kaushal Mishra frontend engineer",
     "Kaushal Mishra Senior Frontend Engineer",
+    "Kaushal Mishra software engineer",
     "Kaushal Mishra React developer",
     "Kaushal Mishra Next.js developer",
+    "Kaushal Mishra resume",
     "Kaushal Mishra portfolio",
     "Kaushal Mishra InfoQueries",
     "Kaushal Mishra InfoProfile",
     "Kaushal Mishra Putler",
     "Kaushal Mishra StoreApps",
-    "Kaushal Mishra Mumbai developer",
     "senior frontend engineer Mumbai",
-    "React Next.js TypeScript engineer India",
+    "frontend developer Mumbai",
+    "React developer Mumbai",
+    "Next.js developer India",
+    "software engineer Mumbai",
+    "SSE streaming UI engineer",
+    "server-side rendering SEO engineer",
+    "AI frontend engineer India",
+  ],
+  /** Every job title that honestly describes the same role — used in Person schema. */
+  jobTitles: [
+    "Senior Frontend Engineer",
+    "Frontend Engineer",
+    "Frontend Developer",
+    "Software Engineer",
+    "Web Developer",
+    "UI Engineer",
   ],
 };
 
@@ -555,6 +572,18 @@ export const faqs = [
   {
     q: "What technologies does Kaushal Mishra work with?",
     a: "React 19, Next.js 16, TypeScript, Tailwind CSS, TanStack Query and Zustand on the frontend; Node.js, NestJS, GraphQL and PostgreSQL on the backend; plus Flutter, and LLM providers including Gemini, Ollama and Perplexity.",
+  },
+  {
+    q: "Is Kaushal Mishra a software engineer or a frontend developer?",
+    a: "Both descriptions fit. Kaushal Mishra is a software engineer who specialises in the frontend — React, Next.js and TypeScript — while also working across Node.js and NestJS APIs, PostgreSQL, and Flutter mobile clients on the products he ships.",
+  },
+  {
+    q: "Where is Kaushal Mishra based, and does he work remotely?",
+    a: `He is based in ${site.location} and has worked remotely for most of his career, including four years delivering for a distributed SaaS team. He is open to on-site, hybrid and fully remote roles.`,
+  },
+  {
+    q: "Where can I find Kaushal Mishra's résumé?",
+    a: `The full résumé is published at ${site.url}/resume and can also be downloaded as a PDF from the same page. It covers his complete work history, technical stack, projects and education.`,
   },
   {
     q: "Is Kaushal Mishra available for hire?",

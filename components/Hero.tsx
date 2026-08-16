@@ -24,27 +24,24 @@ export default function Hero() {
             </p>
           </Rise>
 
+          {/* Name and role live in one h1 so the page's strongest heading carries both. */}
           <Rise delay={70}>
-            <h1
-              id="hero-heading"
-              className="mt-6 font-display text-[clamp(2.75rem,8vw,4.75rem)] font-bold leading-[0.95] tracking-[-0.035em]"
-            >
-              <span className="text-gradient">Kaushal Mishra</span>
+            <h1 id="hero-heading" className="mt-6">
+              <span className="block font-display text-[clamp(2.75rem,8vw,4.75rem)] font-bold leading-[0.95] tracking-[-0.035em] text-gradient">
+                Kaushal Mishra
+              </span>
+              <span className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-sm font-normal text-fg-muted">
+                <span className="text-fg">{site.role}</span>
+                <span className="text-line" aria-hidden="true">
+                  /
+                </span>
+                <span>{site.location}</span>
+                <span className="text-line" aria-hidden="true">
+                  /
+                </span>
+                <span>{YOE} years experience</span>
+              </span>
             </h1>
-          </Rise>
-
-          <Rise delay={130}>
-            <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-sm text-fg-muted">
-              <span className="text-fg">{site.role}</span>
-              <span className="text-line" aria-hidden="true">
-                /
-              </span>
-              <span>{site.location}</span>
-              <span className="text-line" aria-hidden="true">
-                /
-              </span>
-              <span>{YOE} years experience</span>
-            </p>
           </Rise>
 
           <Rise delay={190}>

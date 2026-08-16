@@ -17,8 +17,11 @@ export default function StructuredData() {
       givenName: site.firstName,
       familyName: site.lastName,
       url: site.url,
-      jobTitle: site.role,
+      // Every honest title for the same role, so the entity matches more query phrasings.
+      jobTitle: seo.jobTitles,
       description: seo.description,
+      knowsLanguage: ["en", "hi", "mr"],
+      nationality: { "@type": "Country", name: "India" },
       email: `mailto:${site.email}`,
       telephone: site.phone,
       image: `${site.url}/opengraph-image`,
@@ -44,6 +47,21 @@ export default function StructuredData() {
         "@type": "CollegeOrUniversity",
         name: e.school,
       })),
+      hasCredential: education.map((e) => ({
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "degree",
+        name: e.degree,
+        recognizedBy: { "@type": "CollegeOrUniversity", name: e.school },
+      })),
+      workLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: site.locality,
+          addressRegion: site.region,
+          addressCountry: site.country,
+        },
+      },
       seeks: {
         "@type": "Demand",
         name: site.availability,
@@ -59,6 +77,8 @@ export default function StructuredData() {
       about: { "@id": personId },
       inLanguage: "en",
       isPartOf: { "@id": `${site.url}/#website` },
+      dateModified: new Date().toISOString(),
+      significantLink: [`${site.url}/resume`, `${site.url}${site.resumePath}`],
     },
     {
       "@type": "WebSite",

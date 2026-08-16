@@ -63,24 +63,54 @@ The start date is used only for these calculations; it is never shown on the sit
 
 Any Node host works too (`npm run build && npm run start`).
 
-## After you deploy — the SEO checklist
+## After you deploy — the SEO playbook
 
-The site ships with the on-page work already done. These steps are what actually get you
-ranking for your own name:
+The on-page work is finished. What's left is off-page, and it's the part that actually decides
+rankings.
 
-1. **Set `NEXT_PUBLIC_SITE_URL`** to the live domain and redeploy.
-2. **Google Search Console** — add the property, then either verify by DNS or set the
+### Be realistic about which queries are winnable
+
+| Query type | Example | Realistic? |
+| --- | --- | --- |
+| Your name | `Kaushal Mishra`, `Kaushal Mishra resume` | **Yes — this is the goal.** Expect page 1 in weeks, #1 within a few months with the steps below. |
+| Name + skill | `Kaushal Mishra React developer` | **Yes**, quickly. |
+| Long-tail + local | `senior frontend engineer Mumbai portfolio`, `Next.js SSE streaming engineer India` | **Yes**, with time. Low volume, but the traffic is people who want to hire. |
+| Head terms | `frontend developer`, `software engineer` | **No.** Those SERPs belong to Indeed, LinkedIn Jobs, Naukri and Wikipedia. No personal site ranks there, and chasing them wastes effort. |
+
+The site targets the first three deliberately. Recruiters who find you almost always search your
+name after seeing a CV or a profile — that is the query that matters.
+
+### Do these, in order
+
+1. **Set `NEXT_PUBLIC_SITE_URL`** to the live domain and redeploy. Nothing else works until the
+   canonical URLs are correct.
+2. **Use a name-matching domain** — `kaushalmishra.dev` or `.com`. This is the single largest
+   factor for name queries; a generic domain measurably underperforms.
+3. **Google Search Console** — add the property, verify by DNS or via the
    `GOOGLE_SITE_VERIFICATION` env var (it renders the meta tag for you). Submit
-   `https://your-domain.com/sitemap.xml`, then use *URL Inspection → Request indexing* on both
-   `/` and `/resume`.
-3. **Bing Webmaster Tools** — import the property straight from Search Console.
-4. **Link to the domain from profiles you already control**: LinkedIn (Website field), GitHub
-   profile URL, X/Twitter bio, dev.to, Stack Overflow. These backlinks are the strongest signal
-   tying the name to the domain.
-5. **Prefer a name-matching domain** (`kaushalmishra.dev` / `.com`) — exact-name domains rank
-   noticeably better for name queries than a generic one.
-6. **Keep `sameAs` accurate** in `lib/data.ts` (`site.github`, `site.linkedin`). Google uses it to
-   merge this page with your existing profiles into one entity.
+   `/sitemap.xml`, then *URL Inspection → Request indexing* on `/` and `/resume`.
+4. **Bing Webmaster Tools** — import straight from Search Console. Bing also feeds ChatGPT search.
+5. **Backlinks from profiles you already control.** This is the highest-leverage step and costs
+   nothing: LinkedIn Website field, GitHub profile URL, X/Twitter bio, dev.to, Stack Overflow,
+   Peerlist, and your email signature. Google uses these to merge the site, your name and your
+   profiles into a single entity — which is precisely what makes you rank for your own name.
+6. **Keep `site.github` / `site.linkedin` accurate** in `lib/data.ts`. They are emitted as
+   schema.org `sameAs` and as `rel="me"` links; both are identity signals.
+7. **Redeploy every few months.** Role durations and years of experience recompute at build time,
+   and a fresh `lastmod` encourages recrawling.
+
+### What's already handled on-page
+
+- Title under 60 characters so Google shows it in full; name and role both in the `<h1>`
+- `Person` schema with six honest job-title variants (Senior Frontend Engineer through Software
+  Engineer), degrees as `hasCredential`, languages, work location, and `sameAs` identity links
+- `FAQPage` schema on eight questions phrased the way people actually search — including
+  "software engineer or frontend developer", location/remote, and where to find the résumé
+- `/resume` as a second indexable page, plus the PDF listed in the sitemap (PDFs rank for
+  `<name> resume` queries)
+- `ProfilePage`, `WebSite`, `ItemList` of projects, and `BreadcrumbList` on `/resume`
+- Generated OG image, sitemap with image entry, robots, manifest, canonicals
+- Fully static rendering and a hero that paints without waiting for JavaScript, which keeps LCP low
 
 ## What's already handled
 
