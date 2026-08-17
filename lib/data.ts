@@ -88,6 +88,12 @@ export const seo = {
   // Kept under ~60 characters so Google shows it whole rather than truncating.
   title: `${site.name} — Senior Frontend Engineer | React & Next.js`,
   shortTitle: `${site.name} — Senior Frontend Engineer`,
+  /**
+   * The <meta name="description"> only. Google truncates around 160 characters,
+   * so this stays short enough to render whole in a result snippet.
+   */
+  metaDescription: `${site.name} is a Senior Frontend Engineer in ${site.locality} with ${YOE}+ years in React, Next.js and TypeScript. Six products shipped, 10,000+ users served.`,
+  /** Longer form — used for schema.org, where length is not penalised. */
   description: `${site.name} is a Senior Frontend Engineer in ${site.locality} with ${YOE}+ years building production SaaS and AI-powered platforms in React, Next.js and TypeScript. Six products shipped across StoreApps and Enso Web Works, reaching 10,000+ users — real-time streaming UI, SSR and technical SEO, LLM integration, and frontend architecture.`,
   keywords: [
     "Kaushal Mishra",

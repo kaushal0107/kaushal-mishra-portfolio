@@ -67,7 +67,12 @@ export default function About() {
         </Reveal>
       </div>
 
-      {/* Plain <details> — indexable, keyboard-accessible, zero JS. */}
+      {/*
+        Plain <details> — indexable, keyboard-accessible, zero JS.
+        Each question is a real <h3> inside the <summary>: search engines rank
+        featured snippets off a question-phrased heading followed by a short
+        answer, and a bare <summary> is not a heading element.
+      */}
       <div className="mt-16">
         <h3 className="font-mono text-xs uppercase tracking-[0.12em] text-fg-dim">
           Frequently asked
@@ -75,8 +80,8 @@ export default function About() {
         <div className="mt-5 divide-y divide-line-soft overflow-hidden rounded-2xl border border-line bg-surface/60 backdrop-blur-sm">
           {faqs.map((f, i) => (
             <details key={f.q} className="group px-5 py-4" open={i === 0}>
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-[15px] font-semibold tracking-tight marker:hidden">
-                {f.q}
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 marker:hidden">
+                <h4 className="font-display text-[15px] font-semibold tracking-tight">{f.q}</h4>
                 <span
                   aria-hidden="true"
                   className="shrink-0 font-mono text-sm text-accent transition-transform group-open:rotate-45"

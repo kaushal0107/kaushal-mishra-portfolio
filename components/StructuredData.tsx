@@ -79,6 +79,11 @@ export default function StructuredData() {
       isPartOf: { "@id": `${site.url}/#website` },
       dateModified: new Date().toISOString(),
       significantLink: [`${site.url}/resume`, `${site.url}${site.resumePath}`],
+      // Marks the sections a voice assistant should read aloud.
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["#hero-heading", "#about h4", "#about h4 + p"],
+      },
     },
     {
       "@type": "WebSite",

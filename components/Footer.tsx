@@ -46,7 +46,18 @@ export default function Footer() {
         <span>
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </span>
-        <span>Built with Next.js, TypeScript &amp; Tailwind CSS.</span>
+        <span>
+          {/* Visible freshness signal — search and AI engines both weigh recency. */}
+          Updated{" "}
+          <time dateTime={new Date().toISOString().slice(0, 10)}>
+            {new Date().toLocaleDateString("en-GB", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+          </time>{" "}
+          · Built with Next.js &amp; TypeScript
+        </span>
       </div>
     </footer>
   );
